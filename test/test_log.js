@@ -18,7 +18,7 @@ var edp = require('..');
 
 edp.log.trace('hello %s', 'world');
 edp.log.debug('hello %s', 'world');
-edp.log.info('hello %s', 'world');
+edp.log.info('hello %s %d %j', 'world', 123, {'a': true});
 edp.log.warn('hello %s', 'world');
 edp.log.error('hello %s', 'world');
 edp.log.fatal('hello %s', 'world');
