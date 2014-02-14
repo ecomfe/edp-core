@@ -11,7 +11,8 @@
     "url": "git://github.com/ecomfe/edp-core.git"
   },
   "dependencies": {
-    "chalk": "~0.3.0"
+    "chalk": "~0.3.0",
+    "iconv-lite": "~0.2.11"
   },
   "author": "leeight@gmail.com",
   "license": "BSD-2-Clause",
