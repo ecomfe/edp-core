@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ecomfe/edp-core/issues"
   },
-  "homepage": "https://github.com/ecomfe/edp-core"
+  "homepage": "https://github.com/ecomfe/edp-core",
+  "devDependencies": {
+    "chalk": "~0.3.0"
+  }
 }
