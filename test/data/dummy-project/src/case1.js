@@ -8,20 +8,19 @@
  
  
 /**
- * test_log.js ~ 2014/02/09 22:54:42
+ * data/dummy-project/src/case1.js ~ 2014/02/11 11:34:44
  * @author leeight(liyubei@baidu.com)
  * @version $Revision$ 
  * @description 
  *  
  **/
-var edp = require('..');
-
-edp.log.trace('hello %s', 'world');
-edp.log.debug('hello %s', 'world');
-edp.log.info('hello %s %d %j', 'world', 123, {'a': true});
-edp.log.warn('hello %s', 'world');
-edp.log.error('hello %s', 'world');
-edp.log.fatal('hello %s', 'world');
+define('case1', ['foo', 'tpl!./tpl/123.html'], function(foo, require, exports, module){
+    require('tpl!./tpl/list.tpl.html');
+    require('no-such-plugin!./tpl/list.tpl.html');
+    require('tpl!er/tpl/hello.tpl.html');
+    var z = require('jquery');
+    return 'case1';
+});
 
 
 
