@@ -17,13 +17,14 @@
 var fs = require('fs');
 var path = require('path');
 
-var baseDir = path.resolve(__dirname, 'data', 'analyse-module');
-var analyseModule= require('../lib/esl/analyse-module.js');
+var esl = require( '../lib/esl' );
+var baseDir = path.resolve( __dirname, 'data', 'analyse-module' );
+var analyseModule= require( '../lib/esl/analyse-module.js' );
 
 function getModuleInfo(name) {
-    var code = fs.readFileSync(path.resolve(baseDir, name), 'utf-8');
-    var ast = require('esprima').parse(code);
-    var moduleInfo = analyseModule(ast);
+    var code = fs.readFileSync( path.resolve(baseDir, name), 'utf-8' );
+    var ast = esl.getAst( code );
+    var moduleInfo = analyseModule( ast );
 
     return moduleInfo;
 }
