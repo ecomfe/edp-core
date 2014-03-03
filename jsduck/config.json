@@ -1,0 +1,16 @@
+{
+    "--title": "edp-core",
+    "--output": "../doc/api",
+    "--categories": "categories.json",
+    "--external": "fs.Stats",
+    "--welcome": "../README.md",
+    "--": [
+        "../index.js",
+        "../lib/esl.js",
+        "../lib/log.js",
+        "../lib/path.js",
+        "../lib/fs.js",
+        "../lib/rl.js",
+        "../lib/util.js"
+    ]
+}

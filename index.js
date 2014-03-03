@@ -1,6 +1,6 @@
 /**
- * @file index.js
  * @author leeight@gmail.com
+ * @ignore
  */
 
 

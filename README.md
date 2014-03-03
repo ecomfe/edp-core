@@ -4,3 +4,13 @@
 
 
 Package for edp core.
+
+```javascript
+var edp = require( 'edp-core' );
+
+edp.path.getRootDirectory();
+
+edp.esl.getModuleId( ... );
+
+edp.log.warn( 'Warning message' );
+```

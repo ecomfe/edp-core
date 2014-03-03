@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "make -C test"
+    "test": "make -C test",
+    "doc": "jsduck --config=jsduck/config.json"
   },
   "repository": {
     "type": "git",
