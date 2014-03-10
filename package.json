@@ -1,6 +1,6 @@
 {
   "name": "edp-core",
-  "version": "0.0.18",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,7 @@
     "esprima": "~1.0.2",
     "estraverse": "~1.5.0",
     "chalk": "~0.4.0",
-    "iconv-lite": "~0.2.11",
-    "msee": "~0.1.1"
+    "iconv-lite": "~0.2.11"
   },
   "author": "leeight@gmail.com",
   "license": "BSD-2-Clause",
