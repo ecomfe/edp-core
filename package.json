@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "make -C test"
+    "test": "make -C test",
+    "postinstall": "npm link npm"
   },
   "repository": {
     "type": "git",
@@ -14,7 +15,8 @@
     "esprima": "~1.0.2",
     "estraverse": "~1.5.0",
     "chalk": "~0.4.0",
-    "iconv-lite": "~0.2.11"
+    "iconv-lite": "~0.2.11",
+    "msee": "~0.1.1"
   },
   "author": "leeight@gmail.com",
   "license": "BSD-2-Clause",
