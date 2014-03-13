@@ -14,16 +14,16 @@
  * @description 
  *  
  **/
-var edp = require('..');
+var log = require('../lib/log');
 
 describe("log", function(){
     it("default", function(){
-        edp.log.trace('hello %s', 'world');
-        edp.log.debug('hello %s', 'world');
-        edp.log.info('hello %s %d %j', 'world', 123, {'a': true});
-        edp.log.warn('hello %s', 'world');
-        edp.log.error('hello %s', 'world');
-        edp.log.fatal('hello %s', 'world');
+        log.trace('hello %s', 'world');
+        log.debug('hello %s', 'world');
+        log.info('hello %s %d %j', 'world', 123, {'a': true});
+        log.warn('hello %s', 'world');
+        log.error('hello %s', 'world');
+        log.fatal('hello %s', 'world');
     });
 });
 
