@@ -26,4 +26,38 @@ describe('util', function () {
         
     });
 
+    describe('rmdir', function () {
+
+        var fs = require('fs');
+
+        var baseDir = path.resolve('./data/rmdir');
+
+        beforeEach(function () {
+            if (!fs.existsSync(baseDir)) {
+                fs.mkdirSync(baseDir);
+            }
+        });
+
+        it('should remove not empty directory', function () {
+
+            fs.writeFileSync(path.resolve(baseDir, 'foo.txt'), 'hello', 'utf-8');
+
+            util.rmdir(baseDir);
+
+            expect(fs.existsSync(baseDir)).toBeFalsy();
+        });
+
+        it('should remove nested directory', function () {
+
+            fs.writeFileSync(path.resolve(baseDir, 'foo.txt'), 'hello', 'utf-8');
+            fs.mkdirSync(path.resolve(baseDir, 'bar'));
+            fs.writeFileSync(path.resolve(baseDir, 'bar/bar.txt'), 'world', 'utf-8');
+
+            util.rmdir(baseDir);
+
+            expect(fs.existsSync(baseDir)).toBeFalsy();
+        });
+
+    });
+
 });
