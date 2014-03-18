@@ -14,4 +14,6 @@ require( 'fs' ).readdirSync( __dirname + '/lib' ).forEach(
     }
 );
 
+// 暴露Deferred的构造函数，所有需要的地方都可以用了
+exports.Deferred = require( './lib/base/Deferred' );
 
