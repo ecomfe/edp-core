@@ -23,7 +23,19 @@ describe('util', function () {
             expect(Object.keys(data).length).toBe(1);
             expect(data.name).toEqual('edp-core');
         });
-        
+    });
+
+    describe('scanDir', function(){
+        var dir = path.join( __dirname, './data/dummy-project' );
+        var files = [];
+        util.scanDir( dir, function( file ){
+            if ( /\.js$/.test( file ) ) {
+                files.push( path.relative( dir, file ) );
+            }
+        });
+
+        files.sort();
+        expect( files ).toEqual( ["dep/er/3.0.2/src/View.js", "dep/er/3.0.2/src/main.js", "edp-build-config.js", "src/bar.js", "src/case1.js", "src/common/main.js", "src/etpl-2.0.8.js", "src/foo.js"] );
     });
 
     describe('rmdir', function () {

@@ -24,6 +24,15 @@ describe("esl", function(){
     it("resolveModuleId", function(){
         expect( esl.resolveModuleId( './main.tpl.html', 'common/require-tpl' ) ).toBe( 'common/main.tpl.html' );
     });
+
+    it("getAllModules", function(){
+        var moduleConfig = './data/dummy-project/module.conf';
+        var allModules = esl.getAllModules( moduleConfig );
+        allModules.sort();
+
+        var expected = [ 'bar', 'case1', 'common/main', 'ef/main', 'er', 'er/View', 'er/main', 'esui/main', 'etpl-2.0.8', 'foo', 'io/File', 'io/main', 'moment/moment', 'net/Http', 'net/main', 'swfupload/swfupload', 'underscore.string/underscore.string', 'underscore/underscore' ];
+        expect( allModules ).toEqual( expected );
+    });
 });
 
 
