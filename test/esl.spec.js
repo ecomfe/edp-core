@@ -30,8 +30,48 @@ describe("esl", function(){
         var allModules = esl.getAllModules( moduleConfig );
         allModules.sort();
 
-        var expected = [ 'bar', 'case1', 'common/main', 'ef/main', 'er', 'er/View', 'er/main', 'esui/main', 'etpl-2.0.8', 'foo', 'io/File', 'io/main', 'moment/moment', 'net/Http', 'net/main', 'swfupload/swfupload', 'underscore.string/underscore.string', 'underscore/underscore' ];
+        var expected = [ 'bar', 'case1', 'common/main', 'er', 'er/View', 'er/main', 'etpl-2.0.8', 'foo' ];
         expect( allModules ).toEqual( expected );
+    });
+
+    it("getModuleFile", function () {
+        var moduleConfig = path.resolve( __dirname, 'data/dummy-project/module.conf' );
+        var testDir = path.resolve( __dirname );
+
+        expect( esl.getModuleFile('main', moduleConfig) )
+            .toBe( path.resolve( testDir, 'data/dummy-project/src/main.js' ) );
+        expect( esl.getModuleFile('hello', moduleConfig) )
+            .toBe( path.resolve( testDir, 'data/dummy-project/src/bar/hello.js' ) );
+        expect( esl.getModuleFile('hello/hy', moduleConfig) )
+            .toBe( path.resolve( testDir, 'data/dummy-project/src/bar/hello/hy.js' ) );
+        expect( esl.getModuleFile('er', moduleConfig) )
+            .toBe( path.resolve( testDir, 'data/dummy-project/dep/er/3.0.2/src/main.js' ) );
+        expect( esl.getModuleFile('er/test', moduleConfig) )
+            .toBe( path.resolve( testDir, 'data/dummy-project/dep/er/3.0.2/src/test.js' ) );
+        expect( esl.getModuleFile('moment', moduleConfig) )
+            .toBe( path.resolve( testDir, 'data/dummy-project/dep/moment/2.0.0/src/moment.js' ) );
+        expect( esl.getModuleFile('io', moduleConfig) )
+            .toBe( path.resolve( testDir, 'data/base/io/1.0.0/src/main.js' ) );
+    });
+
+    it("getModuleId", function () {
+        var projectDir = path.resolve( __dirname, 'data/dummy-project' );
+        var moduleConfig = path.resolve( projectDir, 'module.conf' );
+
+        expect( esl.getModuleId(path.resolve(projectDir,'src/main.js'), moduleConfig) )
+            .toEqual( ['main'] );
+        expect( esl.getModuleId(path.resolve(projectDir,'src/common/config.js'), moduleConfig) )
+            .toEqual( ['common/config'] );
+        expect( esl.getModuleId(path.resolve(projectDir,'src/bar/hello.js'), moduleConfig) )
+            .toEqual( ['hello','bar/hello'] );
+        expect( esl.getModuleId(path.resolve(projectDir,'src/bar/hello/hy.js'), moduleConfig) )
+            .toEqual( ['hello/hy','bar/hello/hy'] );
+        expect( esl.getModuleId(path.resolve(projectDir,'dep/er/3.0.2/src/main.js'), moduleConfig) )
+            .toEqual( ['er','er/main'] );
+        expect( esl.getModuleId(path.resolve(projectDir,'dep/er/3.0.2/src/test.js'), moduleConfig) )
+            .toEqual( ['er/test'] );
+        expect( esl.getModuleId('dep/er/3.0.2/src/test.js', moduleConfig) )
+            .toEqual( ['er/test'] );
     });
 });
 
