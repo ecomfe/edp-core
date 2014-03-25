@@ -1,6 +1,6 @@
 {
   "name": "edp-core",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,7 @@
   "dependencies": {
     "esprima": "~1.0.2",
     "estraverse": "~1.5.0",
+    "minimatch": "~0.2.14",
     "chalk": "~0.4.0",
     "iconv-lite": "~0.2.11"
   },
