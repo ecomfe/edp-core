@@ -1,31 +1,31 @@
 /***************************************************************************
- * 
+ *
  * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
- * $Id$ 
- * 
+ * $Id$
+ *
  **************************************************************************/
- 
- 
- 
+
+
+
 /**
  * esl.spec.js ~ 2014/02/27 15:05:18
  * @author leeight(liyubei@baidu.com)
- * @version $Revision$ 
- * @description 
- *  
+ * @version $Revision$
+ * @description
+ *
  **/
-var fs = require('fs');
+// var fs = require('fs');
 var path = require('path');
 
 var esl = require( '../lib/esl' );
 
 
-describe("esl", function(){
-    it("resolveModuleId", function(){
+describe('esl', function(){
+    it('resolveModuleId', function(){
         expect( esl.resolveModuleId( './main.tpl.html', 'common/require-tpl' ) ).toBe( 'common/main.tpl.html' );
     });
 
-    it("getAllModules", function(){
+    it('getAllModules', function(){
         var moduleConfig = './data/dummy-project/module.conf';
         var allModules = esl.getAllModules( moduleConfig );
         allModules.sort();
@@ -34,7 +34,7 @@ describe("esl", function(){
         expect( allModules ).toEqual( expected );
     });
 
-    it("getModuleFile", function () {
+    it('getModuleFile', function () {
         var moduleConfig = path.resolve( __dirname, 'data/dummy-project/module.conf' );
         var testDir = path.resolve( __dirname );
 
@@ -54,7 +54,7 @@ describe("esl", function(){
             .toBe( path.resolve( testDir, 'data/base/io/1.0.0/src/main.js' ) );
     });
 
-    it("getModuleId", function () {
+    it('getModuleId', function () {
         var projectDir = path.resolve( __dirname, 'data/dummy-project' );
         var moduleConfig = path.resolve( projectDir, 'module.conf' );
 

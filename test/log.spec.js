@@ -1,23 +1,23 @@
 /***************************************************************************
- * 
+ *
  * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
- * $Id$ 
- * 
+ * $Id$
+ *
  **************************************************************************/
- 
- 
- 
+
+
+
 /**
  * test_log.js ~ 2014/02/09 22:54:42
  * @author leeight(liyubei@baidu.com)
- * @version $Revision$ 
- * @description 
- *  
+ * @version $Revision$
+ * @description
+ *
  **/
 var log = require('../lib/log');
 
-describe("log", function(){
-    it("default", function(){
+describe('log', function(){
+    it('default', function(){
         log.trace('hello %s', 'world');
         log.debug('hello %s', 'world');
         log.info('hello %s %d %j', 'world', 123, {'a': true});

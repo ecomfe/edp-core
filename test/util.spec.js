@@ -35,7 +35,15 @@ describe('util', function () {
         });
 
         files.sort();
-        expect( files ).toEqual( ["dep/er/3.0.2/src/View.js", "dep/er/3.0.2/src/main.js", "edp-build-config.js", "src/bar.js", "src/case1.js", "src/common/main.js", "src/etpl-2.0.8.js", "src/foo.js"] );
+        expect( files ).toEqual( [
+            'dep/er/3.0.2/src/View.js',
+            'dep/er/3.0.2/src/main.js',
+            'edp-build-config.js',
+            'src/bar.js',
+            'src/case1.js',
+            'src/common/main.js',
+            'src/etpl-2.0.8.js',
+            'src/foo.js'] );
     });
 
     describe('rmdir', function () {

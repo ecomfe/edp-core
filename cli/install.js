@@ -1,18 +1,18 @@
 /***************************************************************************
- * 
+ *
  * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
- * $Id$ 
- * 
+ * $Id$
+ *
  **************************************************************************/
- 
- 
- 
+
+
+
 /**
  * cli/install.js ~ 2014/03/10 11:26:54
  * @author leeight(liyubei@baidu.com)
- * @version $Revision$ 
- * @description 
- *  
+ * @version $Revision$
+ * @description
+ *
  **/
 
 /**
@@ -39,7 +39,7 @@ cli.description = '安装edp的扩展包';
 
 /**
  * 模块命令行运行入口
- * 
+ *
  * @param {Array} args 命令运行参数
  */
 cli.main = function ( args ) {
@@ -48,7 +48,7 @@ cli.main = function ( args ) {
     process.chdir( process.env[ 'EDP_ROOT_PATH' ] );
     pkg.install( args ).then(
         function(){ log.info( 'DONE' ); },
-        function( er ) { log.warn( er.toString() ) }
+        function( er ) { log.warn( er.toString() ); }
     );
 };
 
