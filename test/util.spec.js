@@ -80,4 +80,21 @@ describe('util', function () {
 
     });
 
+    it( 'getConfig', function(){
+        var id = 0;
+        var options = {
+            name: '.xrc',
+            factory: function( file ){
+                var key = 'xrc' + (id ++);
+                var config = {};
+                config[ key ] = 10;
+
+                return config;
+            }
+        };
+
+        var config = util.getConfig( path.resolve( __dirname, 'data', 'base' ), options );
+        expect( config ).toEqual( { xrc0: 10, xrc1: 10 } );
+    });
+
 });
