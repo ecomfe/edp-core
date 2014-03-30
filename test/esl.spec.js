@@ -14,7 +14,7 @@
  * @description
  *
  **/
-// var fs = require('fs');
+var fs = require( 'fs' );
 var path = require('path');
 
 var esl = require( '../lib/esl' );
@@ -72,6 +72,33 @@ describe('esl', function(){
             .toEqual( ['er/test'] );
         expect( esl.getModuleId('dep/er/3.0.2/src/test.js', moduleConfig) )
             .toEqual( ['er/test'] );
+    });
+
+    it( 'toUrl', function(){
+        var projectDir = path.resolve( __dirname, 'data/dummy-project' );
+        var moduleConfigFile = path.resolve( projectDir, 'module.conf' );
+
+        var moduleId = 'io/File';
+        var baseId = null;
+        var baseFile = path.resolve( projectDir, 'src', 'foo.js' );
+        expect( esl.toUrl( moduleId, baseId, baseFile, moduleConfigFile ).file ).toBe(
+            path.resolve( __dirname, 'data/base/io/1.0.0/src/File.js' ) );
+
+        moduleId = 'tpl!./tpl/list.tpl.html';
+        baseId = 'case1';
+        baseFile = path.resolve( projectDir, 'src', 'case1.js' );
+
+        var result = esl.toUrl( moduleId, baseId, baseFile, moduleConfigFile );
+        expect( result.file ).toBe( path.resolve( __dirname, 'data/dummy-project/src/tpl.js' ) );
+        expect( result.resource ).toBe( path.resolve( __dirname, 'data/dummy-project/src/tpl/list.tpl.html.js' ) );
+
+        moduleId = 'no-such-plugin!./tpl/list.tpl.html';
+        baseId = 'case1';
+        baseFile = path.resolve( projectDir, 'src', 'case1.js' );
+
+        var result = esl.toUrl( moduleId, baseId, baseFile, moduleConfigFile );
+        expect( result.file ).toBe( path.resolve( __dirname, 'data/dummy-project/src/no-such-plugin.js' ) );
+        expect( result.resource ).toBe( path.resolve( __dirname, 'data/dummy-project/src/tpl/list.tpl.html.js' ) );
     });
 });
 
