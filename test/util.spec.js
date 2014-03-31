@@ -93,8 +93,22 @@ describe('util', function () {
             }
         };
 
+        spyOn( util, 'getParentDir' ).andCallThrough();
         var config = util.getConfig( path.resolve( __dirname, 'data', 'base' ), options );
         expect( config ).toEqual( { xrc0: 10, xrc1: 10 } );
+        expect( util.getParentDir.callCount ).toEqual( 3 );
+    });
+
+    it( 'getConfig2', function(){
+        spyOn( util, 'getParentDir' ).andCallThrough();
+        var options = {
+            name: '.xyzrc',
+            factory: function( item ){
+                return {};
+            }
+        };
+        var config = util.getConfig( __dirname, options );
+        expect( util.getParentDir.callCount ).toEqual( 1 );
     });
 
 });
