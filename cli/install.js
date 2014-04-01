@@ -24,13 +24,6 @@
 var cli = {};
 
 /**
- * 命令名称
- *
- * @type {string}
- */
-cli.command = 'install';
-
-/**
  * 命令描述信息
  *
  * @type {string}
@@ -45,7 +38,6 @@ cli.description = '安装edp的扩展包';
 cli.main = function ( args ) {
     var pkg = require( '../lib/pkg' );
     var log = require( '../lib/log' );
-    process.chdir( process.env[ 'EDP_ROOT_PATH' ] );
     pkg.install( args ).then(
         function(){ log.info( 'DONE' ); },
         function( er ) { log.warn( er.toString() ); }

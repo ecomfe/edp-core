@@ -16,7 +16,8 @@
     "minimatch": "~0.2.14",
     "chalk": "~0.4.0",
     "iconv-lite": "~0.2.11",
-    "glob": "~3.2.9"
+    "glob": "~3.2.9",
+    "edp-config": "~1.0.2"
   },
   "author": "leeight@gmail.com",
   "license": "BSD-2-Clause",
