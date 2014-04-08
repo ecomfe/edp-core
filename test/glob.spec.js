@@ -15,6 +15,7 @@
  *  
  **/
 var glob = require( '../lib/glob' );
+var path = require( 'path' );
 
 var ALL_CANDIDATES = [
     'er',
@@ -42,6 +43,15 @@ describe( 'glob', function (){
         patterns = [ /^er/, '!er/Model', '!er/Controller' ];
         expected = [ 'er', 'er/sub/Model', 'er/sub/Controller' ];
         expect( glob.filter( patterns, ALL_CANDIDATES ) ).toEqual( expected );
+    });
+
+    it( 'sync', function(){
+        var cwd = path.join( __dirname, 'data/util/glob' );
+        var options = { nodir: true, cwd: cwd };
+        expect( glob.sync( [ '*.js' ], options ) ).toEqual( [ 'a.js' ] );
+        expect( glob.sync( [ '**/*.js' ], options ) ).toEqual( [ 'a.js', 'b/b.js' ] );
+        expect( glob.sync( [ '**/b**' ], options ) ).toEqual( [ 'b/b.js' ] );
+        expect( glob.sync( [ '**/b*' ], { cwd: cwd } ) ).toEqual( [ 'b', 'b/b.js' ] );
     });
 });
 
