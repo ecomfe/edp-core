@@ -1,6 +1,6 @@
 {
   "name": "edp-core",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git://github.com/ecomfe/edp-core.git"
   },
   "dependencies": {
-    "esprima": "~1.0.2",
+    "esprima": "~1.1.1",
     "estraverse": "~1.5.0",
     "minimatch": "~0.2.14",
     "chalk": "~0.4.0",
