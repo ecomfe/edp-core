@@ -30,7 +30,7 @@ describe('esl', function(){
         var allModules = esl.getAllModules( moduleConfig );
         allModules.sort();
 
-        var expected = [ 'bar', 'case1', 'common/main', 'er', 'er/View', 'er/main', 'etpl-2.0.8', 'foo' ];
+        var expected = [ 'bar', 'case1', 'common/main', 'er', 'er/View', 'er/main', 'etpl-2.0.8', 'foo', 'io/File', 'net/Http' ];
         expect( allModules ).toEqual( expected );
     });
 
