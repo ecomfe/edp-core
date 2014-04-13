@@ -17,13 +17,13 @@
 var fs = require('fs');
 var path = require('path');
 
-var esl = require( '../lib/esl' );
+var amd = require( '../lib/amd' );
 var baseDir = path.resolve( __dirname, 'data', 'analyse-module' );
-var analyseModule= require( '../lib/esl/analyse-module.js' );
+var analyseModule= require( '../lib/amd/analyse-module.js' );
 
 function getModuleInfo(name) {
     var code = fs.readFileSync( path.resolve(baseDir, name), 'utf-8' );
-    var ast = esl.getAst( code );
+    var ast = amd.getAst( code );
     var moduleInfo = analyseModule( ast );
 
     return moduleInfo;
