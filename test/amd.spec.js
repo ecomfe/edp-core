@@ -8,7 +8,7 @@
 
 
 /**
- * esl.spec.js ~ 2014/02/27 15:05:18
+ * amd.spec.js ~ 2014/02/27 15:05:18
  * @author leeight(liyubei@baidu.com)
  * @version $Revision$
  * @description
@@ -17,20 +17,20 @@
 var fs = require( 'fs' );
 var path = require('path');
 
-var esl = require( '../lib/esl' );
+var amd = require( '../lib/amd' );
 
 
-describe('esl', function(){
+describe('amd', function(){
     it('resolveModuleId', function(){
-        expect( esl.resolveModuleId( './main.tpl.html', 'common/require-tpl' ) ).toBe( 'common/main.tpl.html' );
+        expect( amd.resolveModuleId( './main.tpl.html', 'common/require-tpl' ) ).toBe( 'common/main.tpl.html' );
     });
 
     it('getAllModules', function(){
         var moduleConfig = './data/dummy-project/module.conf';
-        var allModules = esl.getAllModules( moduleConfig );
+        var allModules = amd.getAllModules( moduleConfig );
         allModules.sort();
 
-        var expected = [ 'bar', 'case1', 'common/main', 'er', 'er/View', 'er/main', 'etpl-2.0.8', 'foo' ];
+        var expected = [ 'bar', 'case1', 'common/main', 'er', 'er/View', 'er/main', 'etpl-2.0.8', 'foo', 'io/File', 'net/Http' ];
         expect( allModules ).toEqual( expected );
     });
 
@@ -38,19 +38,19 @@ describe('esl', function(){
         var moduleConfig = path.resolve( __dirname, 'data/dummy-project/module.conf' );
         var testDir = path.resolve( __dirname );
 
-        expect( esl.getModuleFile('main', moduleConfig) )
+        expect( amd.getModuleFile('main', moduleConfig) )
             .toBe( path.resolve( testDir, 'data/dummy-project/src/main.js' ) );
-        expect( esl.getModuleFile('hello', moduleConfig) )
+        expect( amd.getModuleFile('hello', moduleConfig) )
             .toBe( path.resolve( testDir, 'data/dummy-project/src/bar/hello.js' ) );
-        expect( esl.getModuleFile('hello/hy', moduleConfig) )
+        expect( amd.getModuleFile('hello/hy', moduleConfig) )
             .toBe( path.resolve( testDir, 'data/dummy-project/src/bar/hello/hy.js' ) );
-        expect( esl.getModuleFile('er', moduleConfig) )
+        expect( amd.getModuleFile('er', moduleConfig) )
             .toBe( path.resolve( testDir, 'data/dummy-project/dep/er/3.0.2/src/main.js' ) );
-        expect( esl.getModuleFile('er/test', moduleConfig) )
+        expect( amd.getModuleFile('er/test', moduleConfig) )
             .toBe( path.resolve( testDir, 'data/dummy-project/dep/er/3.0.2/src/test.js' ) );
-        expect( esl.getModuleFile('moment', moduleConfig) )
+        expect( amd.getModuleFile('moment', moduleConfig) )
             .toBe( path.resolve( testDir, 'data/dummy-project/dep/moment/2.0.0/src/moment.js' ) );
-        expect( esl.getModuleFile('io', moduleConfig) )
+        expect( amd.getModuleFile('io', moduleConfig) )
             .toBe( path.resolve( testDir, 'data/base/io/1.0.0/src/main.js' ) );
     });
 
@@ -58,19 +58,19 @@ describe('esl', function(){
         var projectDir = path.resolve( __dirname, 'data/dummy-project' );
         var moduleConfig = path.resolve( projectDir, 'module.conf' );
 
-        expect( esl.getModuleId(path.resolve(projectDir,'src/main.js'), moduleConfig) )
+        expect( amd.getModuleId(path.resolve(projectDir,'src/main.js'), moduleConfig) )
             .toEqual( ['main'] );
-        expect( esl.getModuleId(path.resolve(projectDir,'src/common/config.js'), moduleConfig) )
+        expect( amd.getModuleId(path.resolve(projectDir,'src/common/config.js'), moduleConfig) )
             .toEqual( ['common/config'] );
-        expect( esl.getModuleId(path.resolve(projectDir,'src/bar/hello.js'), moduleConfig) )
+        expect( amd.getModuleId(path.resolve(projectDir,'src/bar/hello.js'), moduleConfig) )
             .toEqual( ['hello','bar/hello'] );
-        expect( esl.getModuleId(path.resolve(projectDir,'src/bar/hello/hy.js'), moduleConfig) )
+        expect( amd.getModuleId(path.resolve(projectDir,'src/bar/hello/hy.js'), moduleConfig) )
             .toEqual( ['hello/hy','bar/hello/hy'] );
-        expect( esl.getModuleId(path.resolve(projectDir,'dep/er/3.0.2/src/main.js'), moduleConfig) )
+        expect( amd.getModuleId(path.resolve(projectDir,'dep/er/3.0.2/src/main.js'), moduleConfig) )
             .toEqual( ['er','er/main'] );
-        expect( esl.getModuleId(path.resolve(projectDir,'dep/er/3.0.2/src/test.js'), moduleConfig) )
+        expect( amd.getModuleId(path.resolve(projectDir,'dep/er/3.0.2/src/test.js'), moduleConfig) )
             .toEqual( ['er/test'] );
-        expect( esl.getModuleId('dep/er/3.0.2/src/test.js', moduleConfig) )
+        expect( amd.getModuleId('dep/er/3.0.2/src/test.js', moduleConfig) )
             .toEqual( ['er/test'] );
     });
 
@@ -81,14 +81,14 @@ describe('esl', function(){
         var moduleId = 'io/File';
         var baseId = null;
         var baseFile = path.resolve( projectDir, 'src', 'foo.js' );
-        expect( esl.toUrl( moduleId, baseId, baseFile, moduleConfigFile ).file ).toBe(
+        expect( amd.toUrl( moduleId, baseId, baseFile, moduleConfigFile ).file ).toBe(
             path.resolve( __dirname, 'data/base/io/1.0.0/src/File.js' ) );
 
         moduleId = 'tpl!./tpl/list.tpl.html';
         baseId = 'case1';
         baseFile = path.resolve( projectDir, 'src', 'case1.js' );
 
-        var result = esl.toUrl( moduleId, baseId, baseFile, moduleConfigFile );
+        var result = amd.toUrl( moduleId, baseId, baseFile, moduleConfigFile );
         expect( result.file ).toBe( path.resolve( __dirname, 'data/dummy-project/src/tpl.js' ) );
         expect( result.resource ).toBe( path.resolve( __dirname, 'data/dummy-project/src/tpl/list.tpl.html.js' ) );
 
@@ -96,7 +96,7 @@ describe('esl', function(){
         baseId = 'case1';
         baseFile = path.resolve( projectDir, 'src', 'case1.js' );
 
-        var result = esl.toUrl( moduleId, baseId, baseFile, moduleConfigFile );
+        var result = amd.toUrl( moduleId, baseId, baseFile, moduleConfigFile );
         expect( result.file ).toBe( path.resolve( __dirname, 'data/dummy-project/src/no-such-plugin.js' ) );
         expect( result.resource ).toBe( path.resolve( __dirname, 'data/dummy-project/src/tpl/list.tpl.html.js' ) );
     });

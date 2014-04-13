@@ -51,6 +51,25 @@ describe('path', function (){
         expect( path.satisfy( 'a/123/b', 'a/**/b' ) ).toBe( true );
         expect( path.satisfy( 'a/123/456/b', 'a/**/b' ) ).toBe( true );
     });
+
+    it('extension', function(){
+        expect( path.satisfy( 'esui', '~esui' ) ).toBe( true );
+        expect( path.satisfy( 'abc/esui', '~esui' ) ).toBe( false );
+
+        expect( path.satisfy( 'esui/Button', '~esui' ) ).toBe( true );
+        expect( path.satisfy( 'abc/esui/Button', '~esui' ) ).toBe( false );
+
+        expect( path.satisfy( 'esui/Button/Button', '~esui' ) ).toBe( true );
+        expect( path.satisfy( 'abc/esui/Button/Button', '~esui' ) ).toBe( false );
+
+        expect( path.satisfy( 'esui', '~esui/' ) ).toBe( false );
+        expect( path.satisfy( 'esui/Button', '~esui/' ) ).toBe( true );
+        expect( path.satisfy( 'esui/Button/Button', '~esui/' ) ).toBe( true );
+    });
+
+    it('regexp', function(){
+        expect( path.satisfy( 'esui', /esui/ ) ).toBe( true );
+    });
 });
 
 
