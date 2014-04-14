@@ -24,6 +24,10 @@ describe('log', function(){
         log.warn('hello %s', 'world');
         log.error('hello %s', 'world');
         log.fatal('hello %s', 'world');
+        console.log();
+        log.raw( 'hello world' );
+        log.raw( 'hello world 2' );
+        log.raw( '\nhello world 3' );
     });
 });
 
