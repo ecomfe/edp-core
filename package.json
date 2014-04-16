@@ -1,11 +1,10 @@
 {
   "name": "edp-core",
-  "version": "1.0.20",
+  "version": "1.0.22",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "make -C test",
-    "postinstall": "node ./lib/postinstall.js"
+    "test": "make -C test"
   },
   "repository": {
     "type": "git",
