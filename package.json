@@ -1,6 +1,6 @@
 {
   "name": "edp-core",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,7 @@
     "estraverse": "~1.5.0",
     "minimatch": "~0.2.14",
     "chalk": "~0.4.0",
+    "semver": "~2.3.0",
     "iconv-lite": "~0.2.11",
     "glob": "~3.2.9",
     "edp-config": "~1.0.2"
