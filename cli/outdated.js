@@ -53,7 +53,7 @@ cli.main = function ( args ) {
             );
         }
         else {
-            console.log( '  All package are latest.' );
+            console.log( '  All packages are the latest.' );
         }
     }
 
