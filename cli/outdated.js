@@ -64,36 +64,36 @@ cli.main = function ( args ) {
         }
     }
 
-    // 因为edp-core不方便的获取edp的安装目录，所以也就不方便的扫描所有安装的packages
-    // 因此我们通过获取edp -v的输出，解析出我们需要的内容.
-    var cmd = require( '../lib/util' ).spawn( 'edp', [ '-v' ] );
-    cmd.stdout.on( 'data', function( data ){
-        stdout.push( data );
-    });
-    cmd.on( 'close', function( code ){
-        stdout = Buffer.concat( stdout ).toString( 'utf-8' ).split( /[\r?\n]+/g ); // .slice( 2 );
-        var edpPkgs = util.getEdpPackages( stdout );
-
-        edp.log.info( 'Checking edp pacakges...' );
-        util.checkUpdate( edpPkgs ).done(function( outdatedPkgs ){
+    var prjPkgs = util.getPrjPackages();
+    if ( prjPkgs.length ) {
+        // 处于项目中
+        edp.log.info( 'Checking dep pacakges...' );
+        util.checkUpdate( prjPkgs, 'http://edp-registry.baidu.com' ).done( function( outdatedPkgs ){
             edp.log.write( '' );
-            displayOutdatedPackages( outdatedPkgs, '  [sudo] npm i -g' );
-
-            var prjPkgs = util.getPrjPackages();
-            if ( prjPkgs.length ) {
-                edp.log.info( 'Checking dep pacakges...' );
-                util.checkUpdate( prjPkgs, 'http://edp-registry.baidu.com' ).done( function( outdatedPkgs ){
-                    edp.log.write( '' );
-                    displayOutdatedPackages( outdatedPkgs, '  edp import' );
-
-                    displayUpgradeInstruction();
-                });
-            }
-            else {
-                displayUpgradeInstruction();
-            }
+            displayOutdatedPackages( outdatedPkgs, '  edp import' );
+            displayUpgradeInstruction();
         });
-    });
+    }
+    else {
+        // 没有处于项目中
+        // 因为edp-core不方便的获取edp的安装目录，所以也就不方便的扫描所有安装的packages
+        // 因此我们通过获取edp -v的输出，解析出我们需要的内容.
+        var cmd = require( '../lib/util' ).spawn( 'edp', [ '-v' ] );
+        cmd.stdout.on( 'data', function( data ){
+            stdout.push( data );
+        });
+        cmd.on( 'close', function( code ){
+            stdout = Buffer.concat( stdout ).toString( 'utf-8' ).split( /[\r?\n]+/g ); // .slice( 2 );
+            var edpPkgs = util.getEdpPackages( stdout );
+
+            edp.log.info( 'Checking edp pacakges...' );
+            util.checkUpdate( edpPkgs ).done(function( outdatedPkgs ){
+                edp.log.write( '' );
+                displayOutdatedPackages( outdatedPkgs, '  [sudo] npm i -g' );
+                displayUpgradeInstruction();
+            });
+        });
+    }
 };
 
 function filterPackage( pkg ) {
