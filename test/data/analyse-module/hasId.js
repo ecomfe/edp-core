@@ -14,7 +14,7 @@
  * @description 
  *  
  **/
-define('foo', function(require) {
+define('foo', function(require, exports, module) {
     var er = require('er');
     return er;
 });

@@ -45,8 +45,6 @@ describe('analyse-module', function() {
         expect(moduleInfo.actualDependencies)
             .toEqual([
                 'require',
-                'exports', 
-                'module',
                 'io/File',
                 'net/Http',
                 'er/View'
@@ -102,12 +100,7 @@ describe('analyse-module', function() {
         expect(moduleInfo).not.toBeNull();
         expect(moduleInfo.id).toBeUndefined();
         expect(moduleInfo.dependencies).toBeUndefined();
-        expect(moduleInfo.actualDependencies)
-            .toEqual([
-                'require',
-                'exports',
-                'module'
-            ]);
+        expect(moduleInfo.actualDependencies).toEqual([]);
         expect(moduleInfo.factoryAst.name).toBe('etpl');
     });
 
