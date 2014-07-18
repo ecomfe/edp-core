@@ -16,7 +16,6 @@
  **/
 var edp = require( '../index' );
 var util = require( '../lib/util/pkg' );
-var Deferred = require( '../lib/base/Deferred' );
 
 /**
  * 命令行配置项
@@ -48,7 +47,7 @@ cli.main = function ( args ) {
             console.log( outdatedPkgs.map( formatPackage ).join( '\n' ) );
             upgradeInstruction.push(
                 edp.util.colorize( prefix, 'warning' ) + ' ' + outdatedPkgs.map(function(pkg ){
-                    return pkg.name + '@' + pkg.latest
+                    return pkg.name + '@' + pkg.latest;
                 }).join( ' ' )
             );
         }
