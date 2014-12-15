@@ -20,6 +20,12 @@
     "glob": "~3.2.9",
     "edp-config": "~1.0.2"
   },
+  "web": {
+    "disabledCommands": [
+      "install",
+      "outdated"
+    ]
+  },
   "author": "leeight@gmail.com",
   "license": "BSD-2-Clause",
   "bugs": {
