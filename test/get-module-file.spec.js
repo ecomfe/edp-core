@@ -29,6 +29,13 @@ describe('GetModuleFile', function () {
         var m3 = GetModuleFile('bar/hello', moduleConfig);
         expect(m2).toBe(m3);
     });
+
+    xit('x', function () {
+        var Project = '/Volumes/HDD/Users/leeight/local/case/FOR_2015_4_20_BRANCH/embed_src';
+        var moduleConfig = path.join(Project, 'module.conf');
+        var file = path.join(Project, 'src', 'common', 'css.js');
+        console.log(GetModuleId(file, moduleConfig));
+    });
 });
 
 

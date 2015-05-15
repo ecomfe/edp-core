@@ -1,6 +1,6 @@
 {
   "name": "edp-core",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,13 +11,13 @@
     "url": "git://github.com/ecomfe/edp-core.git"
   },
   "dependencies": {
-    "esprima": "~1.1.1",
-    "estraverse": "~1.5.0",
-    "minimatch": "~0.2.14",
-    "chalk": "~0.4.0",
-    "semver": "~2.3.0",
-    "iconv-lite": "~0.2.11",
-    "glob": "~3.2.9",
+    "esprima": "~2.2.0",
+    "estraverse": "~4.1.0",
+    "minimatch": "~2.0.4",
+    "chalk": "~1.0.0",
+    "semver": "~4.3.3",
+    "iconv-lite": "~0.4.8",
+    "glob": "~5.0.5",
     "edp-config": "~1.0.2"
   },
   "web": {
