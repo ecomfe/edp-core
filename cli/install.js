@@ -1,19 +1,7 @@
-/***************************************************************************
- *
- * Copyright (c) 2014 Baidu.com, Inc. All Rights Reserved
- * $Id$
- *
- **************************************************************************/
-
-
-
 /**
- * cli/install.js ~ 2014/03/10 11:26:54
+ * @file edp install
  * @author leeight(liyubei@baidu.com)
- * @version $Revision$
- * @description
- *
- **/
+ */
 
 /**
  * 命令行配置项
@@ -35,12 +23,16 @@ cli.description = '安装edp的扩展包';
  *
  * @param {Array} args 命令运行参数
  */
-cli.main = function ( args ) {
-    var pkg = require( '../lib/pkg' );
-    var log = require( '../lib/log' );
-    pkg.install( args ).then(
-        function(){ log.info( 'DONE' ); },
-        function( er ) { log.warn( er.toString() ); }
+cli.main = function (args) {
+    var pkg = require('../lib/pkg');
+    var log = require('../lib/log');
+    pkg.install(args).then(
+        function () {
+            log.info('DONE');
+        },
+        function (er) {
+            log.warn(er.toString());
+        }
     );
 };
 
@@ -50,24 +42,3 @@ cli.main = function ( args ) {
  * @type {Object}
  */
 exports.cli = cli;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* vim: set ts=4 sw=4 sts=4 tw=100: */
