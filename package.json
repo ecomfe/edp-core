@@ -33,5 +33,6 @@
   },
   "homepage": "https://github.com/ecomfe/edp-core",
   "devDependencies": {
+    "jasmine-node": "^1.14.5"
   }
 }
