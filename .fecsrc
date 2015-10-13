@@ -7,7 +7,7 @@
 
         "rules": {
             "no-console": 0,
-            "max-len": 300
+            "max-len": [2, 120, 4, {"ignorePattern": true, "ignoreComments": true}]
         }
     }
 }
