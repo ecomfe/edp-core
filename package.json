@@ -13,7 +13,7 @@
   "dependencies": {
     "esprima": "~2.2.0",
     "estraverse": "~4.1.0",
-    "minimatch": "~2.0.4",
+    "minimatch": "~3.0.4",
     "chalk": "~1.0.0",
     "semver": "~4.3.3",
     "iconv-lite": "~0.4.8",
